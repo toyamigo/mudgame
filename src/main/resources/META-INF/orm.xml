@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+                 xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
+http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-query name="findGebruikerByEmailAdres">
+		<query>
+			select g from Gebruiker g where g.emailAdres = :emailAdres  
+		</query>
+	</named-query>
+	
+        <!-- findKaraktersByGebruiker meervoud Karakters -->
+	<named-query name="findKaraktersByGebruiker">
+		<query>
+			select k from Karakter k where k.gebruiker = :gebruiker
+		</query>
+	</named-query>
+	
+         <!-- findKaraktersByLocatie meervoud Karakters -->
+	<named-query name="findKaraktersByLokatie">
+		<query>
+			select k from Karakter k where k.lokatie = :lokatie
+		</query>
+	</named-query>
+        
+        <named-query name="findAllLokaties">
+            <query>
+                select l from Lokatie l order by l.id
+            </query>
+        </named-query>
+        
+        <!-- Waartoe dient dit? -->                        
+        <named-query name="findLokatiesByBestemming">
+            <query>
+                select l from Lokatie l
+            </query>
+        </named-query>
+                
+        <named-query name="findItemsByEigenaar">
+            <query>
+                select distinct i from Item i join i.eigenaars e where e = :eigenaar
+            </query>
+        </named-query>
+
+</entity-mappings>
+
+
+
